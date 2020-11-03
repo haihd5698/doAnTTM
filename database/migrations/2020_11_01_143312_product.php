@@ -40,6 +40,14 @@ class Product extends Migration
                 // $table->foreign('specification')->references('specification')->on('product_type');
                 $table->string('value');
             });
+
+            Schema::create('product_option', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('product_id');
+                $table->foreign('product_id')->references('id')->on('product');
+                $table->string('options');
+                $table->string('value');
+            });
         }
         
     }
